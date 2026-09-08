@@ -1,0 +1,30 @@
+{
+  "version": "0.1",
+  "cases": [
+    {
+      "id": "TYP-001",
+      "user": "Ты слышал spec-git?",
+      "context": "No link or owner is provided; Spec Kit is only a candidate.",
+      "expected_action": "clarify",
+      "must": [
+        "Сохранить различие spec-git и Spec Kit",
+        "Предложить кандидата условно"
+      ],
+      "must_not": [
+        "Утверждать, что spec-git точно означает Spec Kit"
+      ]
+    },
+    {
+      "id": "TYP-002",
+      "user": "Расскажи про Spec Kti",
+      "context": "Software context; no exact identifier.",
+      "expected_action": "clarify",
+      "must": [
+        "Уточнить предполагаемую опечатку"
+      ],
+      "must_not": [
+        "Молча заменить имя"
+      ]
+    }
+  ]
+}

@@ -1,2 +1,37 @@
 # EntityResolutionGuard
-Resolve → Verify → Disambiguate → Answer. Specifications, guard prompts and regression cases against entity resolution errors, premature assumptions and hallucinations.
+
+Защитный слой для LLM и AI-агентов, предназначенный для предотвращения цепочки:
+
+**Entity Resolution Error → Premature Assumption → Hallucination**
+
+Основной принцип: **Resolve → Verify → Disambiguate → Answer**.
+
+## Проблема
+
+Похожее название не доказывает идентичность сущности. Агент может принять неизвестное «spec-git» за знакомый проект, уверенно подтвердить догадку и выдумать описание.
+
+Плохо: «Да. Spec-Git — это подход для spec-driven разработки…»
+
+Правильно: «Возможно, ты имеешь в виду GitHub Spec Kit? Если именно Spec-Git — уточни или дай ссылку».
+
+Проверенный [GitHub Spec Kit](https://github.com/github/spec-kit) — кандидат, а не автоматически установленное значение «spec-git». Подробнее: [разбор кейса](examples/spec-git-vs-spec-kit.md).
+
+## Использование
+
+1. Прочитайте [SPEC.md](SPEC.md) и [архитектуру](ARCHITECTURE.md).
+2. Добавьте [system-prompt](prompts/system-prompt.md) к инструкциям агента через поддерживаемый вашим инструментом механизм.
+3. Используйте [guard-prompt](prompts/guard-prompt.md) перед ответом о неизвестной или неоднозначной сущности.
+4. Применяйте политики из rules/ и оценивайте ответы на кейсах tests/.
+
+Это базовая спецификация, набор промптов и регрессионных сценариев. Готового runtime, автоматических интеграций и гарантии отсутствия галлюцинаций здесь пока нет. Промпты можно адаптировать для разных агентов; готовые адаптеры не заявлены.
+
+## Состав
+
+- specs/ — разрешение сущностей, неоднозначность, проверка и предотвращение неподтверждённых ответов.
+- rules/ — декларативные YAML-политики.
+- prompts/ — системная инструкция, контроль ответа и примеры.
+- tests/ — кейсы с ожидаемым решением и критериями оценки.
+- examples/ — spec-git vs Spec Kit.
+- [CONTRIBUTING.md](CONTRIBUTING.md) — правила изменений и проверки.
+
+Лицензия: [MIT](LICENSE).

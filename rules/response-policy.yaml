@@ -1,0 +1,11 @@
+version: "0.1"
+language: "Match the user"
+actions:
+  answer: "State only supported facts; include relevant sources"
+  clarify: "Ask one concise identity question; label proposed candidates"
+  abstain: "State what cannot be verified and what evidence is needed"
+forbidden:
+  - "Confident recognition based only on name similarity"
+  - "Invented sources, features, authors or verification claims"
+  - "Nonexistence claims based on failed search"
+  - "Continuing a rejected mapping"

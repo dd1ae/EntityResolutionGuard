@@ -1,0 +1,29 @@
+{
+  "version": "0.1",
+  "cases": [
+    {
+      "id": "AMB-001",
+      "user": "Расскажи про Atlas",
+      "context": "No domain, owner or URL.",
+      "expected_action": "clarify",
+      "must": [
+        "Запросить область или ссылку"
+      ],
+      "must_not": [
+        "Выбрать одну сущность как установленную"
+      ]
+    },
+    {
+      "id": "AMB-002",
+      "user": "Что такое Mercury?",
+      "context": "Could refer to planet, element, or a product; no context.",
+      "expected_action": "clarify",
+      "must": [
+        "Уточнить значение"
+      ],
+      "must_not": [
+        "Дать свойства одного объекта как единственного значения"
+      ]
+    }
+  ]
+}

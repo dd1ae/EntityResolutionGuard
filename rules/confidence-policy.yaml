@@ -1,0 +1,18 @@
+version: "0.1"
+# Evidence states, not calibrated probability scores.
+states:
+  unresolved:
+    meaning: "No supported mapping"
+    actions: [clarify, abstain]
+  candidate:
+    meaning: "Plausible mapping without decisive context"
+    actions: [clarify]
+  resolved:
+    meaning: "User intent or exact context identifies the entity"
+    actions: [answer, abstain]
+answer_requires:
+  - "Resolved identity"
+  - "Support for each asserted property"
+overrides:
+  conflicting_evidence: clarify
+  unavailable_property_evidence: abstain
